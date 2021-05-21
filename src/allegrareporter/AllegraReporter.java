@@ -19,8 +19,8 @@ import org.json.*;
 public class AllegraReporter {
 
     public static final String url = "jdbc:mysql://162.241.2.36:3306/navalsup_reporter";
-    public static final String username = "root";
-    public static final String password = "root";
+    public static final String username = "navalsup_report";
+    public static final String password = "reH*X+?H[fct";
     public static String consulta_id = "";
     public static ConectionDB db = new ConectionDB();
     public static ConectionHttps https = new ConectionHttps();
@@ -29,6 +29,7 @@ public class AllegraReporter {
     public static void main(String[] args) throws IOException, SQLException {
         // TODO code application logic here
         //System.out.println(password);
+        java.security.Security.setProperty("jdk.tls.disabledAlgorithms","");
         Connection con = DriverManager.getConnection(url, username, password);
 
         db.connect(url, username, password);

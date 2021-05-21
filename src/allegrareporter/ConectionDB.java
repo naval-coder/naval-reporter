@@ -51,7 +51,7 @@ public class ConectionDB {
     }
 
     public void createReporte(String fecha1, String fecha2) {
-        String insert = "insert into reporte(id, generation_date, start_date, end_date, status) select ifnull(MAX(id),0)+ 1,curdate(), '" + fecha1 + "', '" + fecha2 + "','active' from reporte";
+        String insert = "insert into Reporte(id, generation_date, start_date, end_date, status) select ifnull(MAX(id),0)+ 1,curdate(), '" + fecha1 + "', '" + fecha2 + "','active' from Reporte";
         realizarInsert(insert);
     }
 
@@ -64,7 +64,7 @@ public class ConectionDB {
         Balance
      */
     public void createConsulta(JSONObject json) {
-        String insert = "insert into consulta values("+json.getInt("id")+",(select MAX(id) from reporte), " + json.getDouble("balance") + ", 'active','" + json.optString("description","") + "', '" + json.getString("type") + "')";
+        String insert = "insert into Consulta values("+json.getInt("id")+",(select MAX(id) from Reporte), " + json.getDouble("balance") + ", 'active','" + json.optString("description","") + "', '" + json.getString("type") + "')";
         realizarInsert(insert);
     }
 
@@ -81,7 +81,7 @@ public class ConectionDB {
         Si tiene un padre debe agrerar 
         Categoria_id    int
          */
-        String insert = "insert into categoria values("+json.getInt("id")+","+padre+","+consulta+","+json.getDouble("balance")+",'"+json.getString("text")+"')";
+        String insert = "insert into Categoria values("+json.getInt("id")+","+padre+","+consulta+","+json.getDouble("balance")+",'"+json.getString("text")+"')";
         realizarInsert(insert);
     }
 
